@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-buo+tv164*p7-7qthur5&hcsrr)l539t%3#l#=y(t)zs8s!$+@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://pollsp.herokuapp.com/', '127.0.0.1']
 
 
 # Authentication Backends
