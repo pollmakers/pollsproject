@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+14desT!#a3cup@1$8obt2_+
 #DEBUG = False
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['https://pollsp.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['https://pollsp.herokuapp.com/']
 
 
 # Authentication Backends
