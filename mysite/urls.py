@@ -24,8 +24,6 @@ urlpatterns = [
     path('polls/', include('polls.urls',namespace = 'polls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/profile/',profile),
-    path(
-        "favicon.ico",
-        RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
+    #path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
     )
 ]
