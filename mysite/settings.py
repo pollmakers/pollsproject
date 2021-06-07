@@ -31,11 +31,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
+DEBUG = False
 #DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['https://pollsp.herokuapp.com/']
+#ALLOWED_HOSTS = ['https://pollsp.herokuapp.com/']
 
+ALLOWED_HOSTS = []
 
 # Authentication Backends
 AUTHENTICATION_BACKENDS = [
@@ -97,8 +98,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
 
 
 # Password validation
