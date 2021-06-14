@@ -15,15 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from polls.views import profile
-from django.contrib.staticfiles.storage import staticfiles_storage
-from django.views.generic.base import RedirectView
+import debug_toolbar
 
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls',namespace = 'polls')),
     path('accounts/', include('allauth.urls')),
-    path('accounts/profile/',profile),
+    path('__debug__/', include(debug_toolbar.urls)),
+    
+    #path('accounts/profile/',profile),
     #path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
     )
 ]
+
+admin.site.site_title = 'Polls App'
+admin.site.site_header = 'Polls Application Admin'
+admin.site.site_url = None
+admin.site.index_title = 'Polls Site Administration'
