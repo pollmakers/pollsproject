@@ -2,17 +2,17 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404,render,redirect
 from django.http import HttpResponse, Http404
 from django.urls import reverse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login,logout
 from .models import Question, Choice
-
-# authentication
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login,logout, authenticate
 
 # forms
 from .forms import ChoiceForm, QuestionForm, CreateQuestionForm #,UserForm
 
-def home(request):
-    questions_list = Question.objects.all()[0:4]
+# Create your views here.
+
+def pollhome(request):
+    questions_list = Question.objects.filter(active = True)#.all()[0:4]
     template = 'polls/home.html'
     context = {'questions':questions_list}
 
@@ -98,7 +98,7 @@ def create_new_question(request):
     return render(request = request, template_name=template, context = context)
 
 
-def signupp(request):
+def signup(request):
     #template = 'registration/signup.html'
     #context = {'form':form}
     if request.method == 'POST':
@@ -106,31 +106,8 @@ def signupp(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            ## several otjer steps:
-            # send activation link which user must click to activate account
-            # after the activstion, login
-
             return redirect('polls:home')
     else:
         form = UserCreationForm()
     
-    return render(request,'polls/signup.html',{'form':form})
-
-def signin(request):
-    
-    username = request.POST.get('username',False)
-    password = request.POST.get('password',False)
-    user = authenticate(request, username=username, password='password')
-    if user is not None:
-        login(request, user)
-        return redirect('polls:home')
-    else:
-        # show blank signin form again
-        form = AuthenticationForm()
-
-    template = 'polls/signin.html/'
-    context = {'form':form}
-    return render(request,template,context)
-
-def profile(request):
-    template = 'account/profile.html'
+    return render(request,'polls/newuser.html',{'form':form})

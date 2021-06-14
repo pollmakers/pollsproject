@@ -7,7 +7,7 @@ class Question(models.Model):
     question_description = models.CharField(max_length = 1000, blank=True)
     pub_date = models.DateTimeField('date published')
     slug = models.SlugField(max_length=255, unique=False, null = True)
-
+    active = models.BooleanField(default=False)
     class Meta:
         verbose_name_plural = 'Questions'
         ordering = ['-pub_date']

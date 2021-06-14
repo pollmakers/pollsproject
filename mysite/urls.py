@@ -20,13 +20,10 @@ import debug_toolbar
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
-    path('polls/', include('polls.urls',namespace = 'polls')),
-    path('accounts/', include('allauth.urls')),
+    path('', include('polls.urls',namespace = 'polls')),
     path('__debug__/', include(debug_toolbar.urls)),
     
-    #path('accounts/profile/',profile),
-    #path("favicon.ico",RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
-    )
+
 ]
 
 admin.site.site_title = 'Polls App'
